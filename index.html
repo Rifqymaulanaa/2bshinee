@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2BShine - Skincare Profesional by dr. Putri</title>
+    <link rel="icon" href="favicon.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS Variables untuk Tema Brand 2BShine */
+        :root {
+            --primary-color: #E4A5B5; /* Pink utama dari brand */
+            --secondary-color: #F8DDE3; /* Pink muda untuk background */
+            --accent-color: #FDF0F3; /* Pink sangat terang/putih pink */
+            --text-color: #4D3C40; /* Warna teks gelap ke arah coklat/pink tua */
+            --heading-color: #D18496; /* Warna pink lebih tegas untuk judul */
+            --white-color: #FFFFFF;
+            --green-color-success: #25D366; /* Warna WhatsApp */
+
+            --shadow-light: 0 4px 15px rgba(0, 0, 0, 0.06);
+            --shadow-strong: 0 8px 25px rgba(210, 150, 160, 0.25);
+            --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --border-radius: 20px;
+        }
+
+        /* Reset dan Gaya Dasar */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--secondary-color);
+            background-image: linear-gradient(180deg, var(--accent-color) 0%, var(--secondary-color) 100%);
+            color: var(--text-color);
+            line-height: 1.7;
+            overflow-x: hidden;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        /* Kustom Cursor Follower */
+        .cursor-follower {
+            position: fixed;
+            width: 25px;
+            height: 25px;
+            border: 2px solid var(--primary-color);
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s ease-out, opacity 0.2s ease-out;
+            z-index: 9999;
+            opacity: 0;
+        }
+
+        body:hover .cursor-follower {
+            opacity: 1;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: var(--heading-color);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul { list-style: none; }
+
+        /* Header & Navbar (Dynamic Island Style) */
+        header {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 900px;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(15px);
+            border-radius: 50px;
+            box-shadow: var(--shadow-strong);
+            transition: var(--transition);
+            animation: fadeInDown 1s ease-in-out;
+        }
+
+        @keyframes fadeInDown {
+            from { top: -100px; opacity: 0; }
+            to { top: 20px; opacity: 1; }
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            height: 45px;
+        }
+
+        .logo img {
+            height: 100%;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links li a {
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 8px 16px;
+            border-radius: 30px;
+            color: var(--text-color);
+            font-size: 0.9rem;
+        }
+
+        .nav-links li a:hover, .nav-links li a.active {
+            color: var(--white-color);
+            background-color: var(--primary-color);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--text-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background-color: var(--secondary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--text-color);
+            padding: 0 20px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin-top: 60px; /* Space for navbar */
+        }
+        
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: var(--heading-color);
+            text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            margin-bottom: 35px;
+            font-weight: 300;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 35px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            box-shadow: var(--shadow-strong);
+            letter-spacing: 0.5px;
+        }
+
+        .btn:hover {
+            background-color: var(--heading-color);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 12px 30px rgba(210, 150, 160, 0.4);
+        }
+
+        /* Seksi Umum */
+        section {
+            padding: 100px 8%;
+            scroll-margin-top: 120px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            color: var(--heading-color);
+            font-size: 2.8rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-color);
+            margin: 15px auto 0;
+            border-radius: 3px;
+        }
+
+        /* Products & Bundles Section */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+        }
+
+        .product-card {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-light);
+            transition: var(--transition);
+            text-align: center;
+            padding-bottom: 25px;
+        }
+
+        .product-card:hover {
+            transform: translateY(-15px);
+            box-shadow: var(--shadow-strong);
+        }
+
+        .product-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 25px;
+        }
+
+        .product-info h3 {
+            margin-bottom: 10px;
+            font-size: 1.4rem;
+        }
+
+        .product-info p {
+            color: #555;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            min-height: 55px;
+        }
+
+        .price {
+            display: block;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--heading-color);
+            margin-bottom: 20px;
+        }
+        .price small {
+            text-decoration: line-through;
+            font-size: 1rem;
+            color: #999;
+            margin-left: 10px;
+        }
+
+        /* Testimony Section */
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: var(--accent-color);
+            padding: 35px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-light);
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #444;
+            font-size: 1.05rem;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--heading-color);
+        }
+
+        /* FAQ Section */
+        .faq-item {
+            margin-bottom: 20px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-light);
+        }
+
+        .faq-question {
+            padding: 20px 25px;
+            background-color: var(--white-color);
+            color: var(--text-color);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+        }
+        
+        .faq-question i {
+            transition: transform 0.3s ease;
+        }
+
+        .faq-answer {
+            padding: 0 25px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+            background-color: var(--accent-color);
+        }
+
+        .faq-answer p {
+            padding: 25px 0;
+        }
+        
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--heading-color);
+            color: var(--white-color);
+            padding: 70px 8% 30px;
+            border-radius: 40px 40px 0 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 25px;
+            color: var(--white-color);
+            font-size: 1.5rem;
+        }
+        
+        .footer-column p, .footer-column a {
+            margin-bottom: 12px;
+            display: block;
+            opacity: 0.9;
+            transition: var(--transition);
+        }
+
+        .footer-column a:hover {
+            opacity: 1;
+            color: var(--secondary-color);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--white-color);
+            color: var(--primary-color);
+            transform: translateY(-5px) scale(1.1);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* WhatsApp Floating Button */
+        .wa-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: var(--green-color-success);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            z-index: 999;
+            transition: var(--transition);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+          0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+          70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
+          100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        .wa-float:hover {
+            transform: scale(1.15);
+            animation: none;
+        }
+
+        /* Class untuk Animasi Scroll */
+        .reveal {
+            position: relative;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: 1s all ease;
+        }
+        
+        .reveal.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* Responsiveness */
+        @media (max-width: 992px) {
+            header { width: 95%; }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                max-width: 300px;
+                height: 100vh;
+                background: linear-gradient(160deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 40px;
+                transition: var(--transition);
+                box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li a {
+                color: var(--white-color);
+                font-size: 1.1rem;
+            }
+            
+            .nav-links li a:hover {
+                background-color: rgba(255, 255, 255, 0.2);
+            }
+
+            .hamburger {
+                display: block;
+                z-index: 1001; /* Must be higher than nav-links */
+            }
+
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header { top: 10px; padding: 8px 15px; }
+            .section-title { font-size: 2.2rem; }
+            .hero-content h1 { font-size: 2.5rem; }
+            .hero-content p { font-size: 1.1rem; }
+            section { padding: 80px 5%; }
+            .cursor-follower { display: none; } /* Hide cursor on touch devices */
+        }
+    </style>
+</head>
+<body>
+    <div class="cursor-follower"></div>
+
+    <header id="header">
+        <a href="#home" class="logo">
+            <img src="logo.png" alt="Logo 2BShine">
+        </a>
+        
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#products">Produk</a></li>
+                <li><a href="#bundles">Paket</a></li>
+                <li><a href="#testimonials">Testimoni</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+        </nav>
+        
+        <div class="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Your Beauty, Your Shine</h1>
+            <p>Rangkaian skincare profesional dengan bahan alami pilihan untuk kulit sehat, cerah, dan ternutrisi setiap hari.</p>
+            <a href="#products" class="btn">Lihat Produk Kami</a>
+        </div>
+    </section>
+
+    <section id="products" class="products">
+        <h2 class="section-title reveal">Produk Unggulan</h2>
+        <div class="product-grid">
+            <div class="product-card reveal">
+                <img src="produk1.png" alt="Platinum Silky Facial Wash" class="product-img">
+                <div class="product-info">
+                    <h3>Platinum Silky Facial Wash</h3>
+                    <p>Pembersih wajah harian untuk kulit cerah. Diperkaya Niacinamide, Aloe Vera, dan Witch Hazel.</p>
+                    <a href="https://wa.me/628123456789" class="btn">Pesan Sekarang</a>
+                </div>
+            </div>
+            <div class="product-card reveal">
+                <img src="produk2.png" alt="Platinum Sunshine Cream Sunscreen" class="product-img">
+                <div class="product-info">
+                    <h3>Sunshine Cream Sunscreen</h3>
+                    <p>Tabir surya dengan Anti UV SPF 50 untuk melindungi dan membantu mengurangi minyak berlebih.</p>
+                    <a href="https://wa.me/628123456789" class="btn">Pesan Sekarang</a>
+                </div>
+            </div>
+            <div class="product-card reveal">
+                <img src="produk3.png" alt="Acne Care Relief Face Wash" class="product-img">
+                <div class="product-info">
+                    <h3>Acne Care Relief Face Wash</h3>
+                    <p>Tenangkan kulit dan kurangi jerawat dengan kandungan Aloevera Extract dan Sulfur.</p>
+                    <a href="https://wa.me/628123456789" class="btn">Pesan Sekarang</a>
+                </div>
+            </div>
+             <div class="product-card reveal">
+                <img src="produk6.png" alt="Retin Platinum Night Cream" class="product-img">
+                <div class="product-info">
+                    <h3>Retin Platinum Night Cream</h3>
+                    <p>Krim malam untuk kulit lebih cerah dan ternutrisi dengan Retinol, Niacinamide, & Vitamin C.</p>
+                    <a href="https://wa.me/628123456789" class="btn">Pesan Sekarang</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="bundles" class="bundles">
+        <h2 class="section-title reveal">Rangkaian Lengkap</h2>
+        <div class="product-grid">
+            <div class="product-card reveal">
+                <img src="bundling2.png" alt="Platinum Whitening Series" class="product-img">
+                <div class="product-info">
+                    <h3>Platinum Whitening Series</h3>
+                    <p>Rangkaian lengkap untuk mencerahkan wajah, terdiri dari facial wash, toner, sunscreen, dan night cream.</p>
+                    <span class="price">Rp 499.000 <small>Rp 650.000</small></span>
+                    <a href="https://wa.me/628123456789" class="btn">Beli Paket</a>
+                </div>
+            </div>
+            <div class="product-card reveal">
+                <img src="bundling1.png" alt="Acne Series" class="product-img">
+                <div class="product-info">
+                    <h3>Acne Series</h3>
+                    <p>Solusi lengkap untuk kulit berjerawat, menenangkan dan merawat kulit agar kembali sehat dan bersih.</p>
+                    <span class="price">Rp 459.000 <small>Rp 620.000</small></span>
+                    <a href="https://wa.me/628123456789" class="btn">Beli Paket</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="testimonials">
+        <h2 class="section-title reveal">Kata Mereka Tentang 2BShine</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial-card reveal">
+                <p class="testimonial-text">"Suka banget sama Acne Series-nya! Jerawat jadi cepat kering dan bekasnya memudar. Kulit jadi lebih tenang dan nggak gampang breakout lagi."</p>
+                <p class="testimonial-author">- Amanda P.</p>
+            </div>
+            
+            <div class="testimonial-card reveal">
+                <p class="testimonial-text">"Sunscreen-nya juara! Nggak lengket sama sekali, cepat meresap, dan beneran nahan minyak. Muka jadi kelihatan fresh seharian."</p>
+                <p class="testimonial-author">- Bella S.</p>
+            </div>
+            
+            <div class="testimonial-card reveal">
+                <p class="testimonial-text">"Worth it banget coba Platinum Whitening Series. Baru 2 minggu pemakaian, kulit terasa lebih kenyal dan kelihatan lebih cerah. Wanginya juga lembut, suka!"</p>
+                <p class="testimonial-author">- Citra K.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="faq">
+        <h2 class="section-title reveal">Pertanyaan Umum</h2>
+        <div class="faq-list">
+            <div class="faq-item reveal">
+                <div class="faq-question">
+                    <span>Apakah produk 2BShine sudah terdaftar BPOM?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Tentu. Semua produk 2BShine telah teruji secara klinis dan resmi terdaftar di Badan Pengawas Obat dan Makanan (BPOM), sehingga terjamin aman untuk Anda gunakan.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item reveal">
+                <div class="faq-question">
+                    <span>Apakah aman untuk ibu hamil dan menyusui?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Produk kami diformulasikan dengan bahan-bahan yang lembut. Namun, untuk produk yang mengandung bahan aktif seperti Retinol, kami sarankan untuk berkonsultasi dengan dokter kandungan Anda terlebih dahulu.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item reveal">
+                <div class="faq-question">
+                    <span>Bagaimana cara mengetahui produk yang cocok untuk saya?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Kami menyediakan layanan konsultasi gratis. Jangan ragu untuk menghubungi kami melalui WhatsApp untuk mendapatkan rekomendasi produk yang paling sesuai dengan jenis dan kondisi kulit Anda.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Tentang 2BShine</h3>
+                <p>2BShine by dr. Putri adalah brand skincare yang berkomitmen menghadirkan produk berkualitas tinggi dengan bahan-bahan alami yang efektif dan aman.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Kontak Kami</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Jl. Merdeka No. 123, Jakarta</p>
+                <p><i class="fas fa-phone"></i> +62 812-3456-7890</p>
+                <p><i class="fas fa-envelope"></i> info@2bshine.com</p>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Navigasi</h3>
+                <a href="#home">Home</a>
+                <a href="#products">Produk</a>
+                <a href="#bundles">Paket</a>
+                <a href="#testimonials">Testimoni</a>
+            </div>
+            
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 2BShine Skincare. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/628123456789" target="_blank" class="wa-float">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            // 1. Mobile Menu Toggle
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+            
+            hamburger.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                hamburger.innerHTML = navLinks.classList.contains('active') ? 
+                    '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+            });
+            
+            // Tutup menu saat link di-klik
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                        hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+                    }
+                });
+            });
+
+            // 2. FAQ Accordion
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    // Tutup semua item lain
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item && otherItem.classList.contains('active')) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    // Toggle item yang diklik
+                    item.classList.toggle('active');
+                });
+            });
+
+            // 3. Animasi Reveal on Scroll (Intersection Observer)
+            const revealElements = document.querySelectorAll('.reveal');
+            
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target); // Animasi hanya sekali
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            revealElements.forEach(el => {
+                revealObserver.observe(el);
+            });
+            
+            // 4. Navlink Active State on Scroll
+            const sections = document.querySelectorAll('section');
+            const navLi = document.querySelectorAll('header nav ul li a');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (pageYOffset >= sectionTop - 150) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLi.forEach(a => {
+                    a.classList.remove('active');
+                    if (a.getAttribute('href') == '#' + current) {
+                        a.classList.add('active');
+                    }
+                });
+            });
+
+            // 5. 3D Tilt Effect on Product Cards
+            const cards = document.querySelectorAll('.product-card');
+            cards.forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left - rect.width / 2;
+                    const y = e.clientY - rect.top - rect.height / 2;
+                    const rotateX = -y / 20; // Mengatur intensitas rotasi
+                    const rotateY = x / 20;
+                    card.style.transform = `translateY(-10px) perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'translateY(0) perspective(1000px) rotateX(0deg) rotateY(0deg)';
+                });
+            });
+
+            // 6. Custom Cursor Follower
+            const cursorFollower = document.querySelector('.cursor-follower');
+            window.addEventListener('mousemove', e => {
+                cursorFollower.style.left = e.clientX + 'px';
+                cursorFollower.style.top = e.clientY + 'px';
+            });
+            
+            // Efek hover pada elemen interaktif
+            document.querySelectorAll('a, button, .product-card, .faq-question').forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    cursorFollower.style.transform = 'translate(-50%, -50%) scale(2)';
+                });
+                el.addEventListener('mouseleave', () => {
+                    cursorFollower.style.transform = 'translate(-50%, -50%) scale(1)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
