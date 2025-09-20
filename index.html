@@ -138,6 +138,19 @@
             cursor: pointer;
             font-size: 1.5rem;
             color: var(--text-color);
+            z-index: 1001;
+        }
+
+        /* Overlay untuk menu mobile */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 998;
         }
 
         /* Hero Section */
@@ -300,6 +313,93 @@
             color: var(--heading-color);
         }
 
+        /* Testimonial Slider Section */
+        .testimonial-slider {
+            background-color: var(--accent-color);
+            padding: 100px 8%;
+        }
+
+        .slider-container {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-strong);
+        }
+
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .slide {
+            min-width: 100%;
+            position: relative;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .slider-nav {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .slider-dot.active {
+            background: var(--white-color);
+            transform: scale(1.2);
+        }
+
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.7);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .slider-btn:hover {
+            background: var(--white-color);
+        }
+
+        .slider-btn.prev {
+            left: 20px;
+        }
+
+        .slider-btn.next {
+            right: 20px;
+        }
+
         /* FAQ Section */
         .faq-item {
             margin-bottom: 20px;
@@ -341,6 +441,7 @@
 
         .faq-item.active .faq-answer {
             max-height: 300px;
+            padding: 0 25px;
         }
 
         /* Footer */
@@ -381,6 +482,7 @@
             display: flex;
             gap: 15px;
             margin-top: 20px;
+            flex-wrap: wrap;
         }
 
         .social-links a {
@@ -468,6 +570,7 @@
                 gap: 40px;
                 transition: var(--transition);
                 box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1);
+                z-index: 999;
             }
 
             .nav-links.active {
@@ -485,11 +588,18 @@
 
             .hamburger {
                 display: block;
-                z-index: 1001; /* Must be higher than nav-links */
+            }
+
+            .overlay.active {
+                display: block;
             }
 
             .hero-content h1 {
                 font-size: 3rem;
+            }
+
+            .slide img {
+                height: 400px;
             }
         }
 
@@ -500,11 +610,27 @@
             .hero-content p { font-size: 1.1rem; }
             section { padding: 80px 5%; }
             .cursor-follower { display: none; } /* Hide cursor on touch devices */
+            
+            .slide img {
+                height: 300px;
+            }
+            
+            .slider-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+            
+            .social-links a {
+                width: 40px;
+                height: 40px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="cursor-follower"></div>
+    <div class="overlay"></div>
 
     <header id="header">
         <a href="#home" class="logo">
@@ -517,6 +643,7 @@
                 <li><a href="#products">Produk</a></li>
                 <li><a href="#bundles">Paket</a></li>
                 <li><a href="#testimonials">Testimoni</a></li>
+                <li><a href="#testimonial-slider">Testimoni Gambar</a></li>
                 <li><a href="#faq">FAQ</a></li>
             </ul>
         </nav>
@@ -542,7 +669,7 @@
                 <div class="product-info">
                     <h3>Platinum Silky Facial Wash</h3>
                     <p>Pembersih wajah harian untuk kulit cerah. Diperkaya Niacinamide, Aloe Vera, dan Witch Hazel.</p>
-                    <a href="https://wa.me/628123456789" class="btn">Pesan Sekarang</a>
+                    <a href="https://wa.me/6282323310821" class="btn">Pesan Sekarang</a>
                 </div>
             </div>
             <div class="product-card reveal">
@@ -550,7 +677,7 @@
                 <div class="product-info">
                     <h3>Sunshine Cream Sunscreen</h3>
                     <p>Tabir surya dengan Anti UV SPF 50 untuk melindungi dan membantu mengurangi minyak berlebih.</p>
-                    <a href="https://wa.me/628123456789" class="btn">Pesan Sekarang</a>
+                    <a href="https://wa.me/6282323310821" class="btn">Pesan Sekarang</a>
                 </div>
             </div>
             <div class="product-card reveal">
@@ -558,7 +685,7 @@
                 <div class="product-info">
                     <h3>Acne Care Relief Face Wash</h3>
                     <p>Tenangkan kulit dan kurangi jerawat dengan kandungan Aloevera Extract dan Sulfur.</p>
-                    <a href="https://wa.me/628123456789" class="btn">Pesan Sekarang</a>
+                    <a href="https://wa.me/6282323310821" class="btn">Pesan Sekarang</a>
                 </div>
             </div>
              <div class="product-card reveal">
@@ -566,7 +693,7 @@
                 <div class="product-info">
                     <h3>Retin Platinum Night Cream</h3>
                     <p>Krim malam untuk kulit lebih cerah dan ternutrisi dengan Retinol, Niacinamide, & Vitamin C.</p>
-                    <a href="https://wa.me/628123456789" class="btn">Pesan Sekarang</a>
+                    <a href="https://wa.me/6282323310821" class="btn">Pesan Sekarang</a>
                 </div>
             </div>
         </div>
@@ -581,7 +708,7 @@
                     <h3>Platinum Whitening Series</h3>
                     <p>Rangkaian lengkap untuk mencerahkan wajah, terdiri dari facial wash, toner, sunscreen, dan night cream.</p>
                     <span class="price">Rp 499.000 <small>Rp 650.000</small></span>
-                    <a href="https://wa.me/628123456789" class="btn">Beli Paket</a>
+                    <a href="https://wa.me/6282323310821" class="btn">Beli Paket</a>
                 </div>
             </div>
             <div class="product-card reveal">
@@ -590,7 +717,7 @@
                     <h3>Acne Series</h3>
                     <p>Solusi lengkap untuk kulit berjerawat, menenangkan dan merawat kulit agar kembali sehat dan bersih.</p>
                     <span class="price">Rp 459.000 <small>Rp 620.000</small></span>
-                    <a href="https://wa.me/628123456789" class="btn">Beli Paket</a>
+                    <a href="https://wa.me/6282323310821" class="btn">Beli Paket</a>
                 </div>
             </div>
         </div>
@@ -612,6 +739,30 @@
             <div class="testimonial-card reveal">
                 <p class="testimonial-text">"Worth it banget coba Platinum Whitening Series. Baru 2 minggu pemakaian, kulit terasa lebih kenyal dan kelihatan lebih cerah. Wanginya juga lembut, suka!"</p>
                 <p class="testimonial-author">- Citra K.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonial-slider" class="testimonial-slider">
+        <h2 class="section-title reveal">Testimoni dalam Gambar</h2>
+        <div class="slider-container">
+            <div class="slider">
+                <div class="slide">
+                    <img src="testimoni1.png" alt="Testimoni 1">
+                </div>
+                <div class="slide">
+                    <img src="testimoni2.png" alt="Testimoni 2">
+                </div>
+                <div class="slide">
+                    <img src="testimoni3.png" alt="Testimoni 3">
+                </div>
+            </div>
+            <button class="slider-btn prev"><i class="fas fa-chevron-left"></i></button>
+            <button class="slider-btn next"><i class="fas fa-chevron-right"></i></button>
+            <div class="slider-nav">
+                <div class="slider-dot active"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
             </div>
         </div>
     </section>
@@ -657,16 +808,19 @@
                 <h3>Tentang 2BShine</h3>
                 <p>2BShine by dr. Putri adalah brand skincare yang berkomitmen menghadirkan produk berkualitas tinggi dengan bahan-bahan alami yang efektif dan aman.</p>
                 <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://www.facebook.com/2bshineofficial" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/2bshineofficial" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@2bshinebydrputri?_t=zs-8z50fmjimjx&_r=1" target="_blank"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://www.tiktok.com/@2bshine_skincare" target="_blank"><i class="fab fa-tiktok"></i></a>
+                    <a href="http://shopee.co.id/2bshinebydrputri" target="_blank"><i class="fas fa-shopping-cart"></i></a>
+                    <a href="https://wa.me/6282323310821" target="_blank"><i class="fab fa-whatsapp"></i></a>
                 </div>
             </div>
             
             <div class="footer-column">
                 <h3>Kontak Kami</h3>
                 <p><i class="fas fa-map-marker-alt"></i> Jl. Merdeka No. 123, Jakarta</p>
-                <p><i class="fas fa-phone"></i> +62 812-3456-7890</p>
+                <p><i class="fas fa-phone"></i> +62 823-2331-0821</p>
                 <p><i class="fas fa-envelope"></i> info@2bshine.com</p>
             </div>
             
@@ -676,6 +830,8 @@
                 <a href="#products">Produk</a>
                 <a href="#bundles">Paket</a>
                 <a href="#testimonials">Testimoni</a>
+                <a href="#testimonial-slider">Testimoni Gambar</a>
+                <a href="#faq">FAQ</a>
             </div>
             
         </div>
@@ -685,21 +841,30 @@
         </div>
     </footer>
 
-    <a href="https://wa.me/628123456789" target="_blank" class="wa-float">
+    <a href="https://wa.me/6282323310821" target="_blank" class="wa-float">
         <i class="fab fa-whatsapp"></i>
     </a>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
 
-            // 1. Mobile Menu Toggle
+            // 1. Mobile Menu Toggle dengan Overlay
             const hamburger = document.querySelector('.hamburger');
             const navLinks = document.querySelector('.nav-links');
+            const overlay = document.querySelector('.overlay');
             
             hamburger.addEventListener('click', () => {
                 navLinks.classList.toggle('active');
+                overlay.classList.toggle('active');
                 hamburger.innerHTML = navLinks.classList.contains('active') ? 
                     '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+            });
+            
+            // Tutup menu saat overlay diklik
+            overlay.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                overlay.classList.remove('active');
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
             });
             
             // Tutup menu saat link di-klik
@@ -707,12 +872,13 @@
                 link.addEventListener('click', () => {
                     if (navLinks.classList.contains('active')) {
                         navLinks.classList.remove('active');
+                        overlay.classList.remove('active');
                         hamburger.innerHTML = '<i class="fas fa-bars"></i>';
                     }
                 });
             });
 
-            // 2. FAQ Accordion
+            // 2. FAQ Accordion - Perbaikan bug
             const faqItems = document.querySelectorAll('.faq-item');
             
             faqItems.forEach(item => {
@@ -799,6 +965,53 @@
                     cursorFollower.style.transform = 'translate(-50%, -50%) scale(1)';
                 });
             });
+
+            // 7. Testimonial Slider
+            const slider = document.querySelector('.slider');
+            const slides = document.querySelectorAll('.slide');
+            const dots = document.querySelectorAll('.slider-dot');
+            const prevBtn = document.querySelector('.slider-btn.prev');
+            const nextBtn = document.querySelector('.slider-btn.next');
+            let currentSlide = 0;
+            
+            function updateSlider() {
+                slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+                
+                // Update dots
+                dots.forEach((dot, index) => {
+                    if (index === currentSlide) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
+                });
+            }
+            
+            // Next slide
+            nextBtn.addEventListener('click', () => {
+                currentSlide = (currentSlide + 1) % slides.length;
+                updateSlider();
+            });
+            
+            // Previous slide
+            prevBtn.addEventListener('click', () => {
+                currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+                updateSlider();
+            });
+            
+            // Click on dot
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    currentSlide = index;
+                    updateSlider();
+                });
+            });
+            
+            // Auto slide every 5 seconds
+            setInterval(() => {
+                currentSlide = (currentSlide + 1) % slides.length;
+                updateSlider();
+            }, 5000);
         });
     </script>
 </body>
