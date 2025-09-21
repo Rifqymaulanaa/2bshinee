@@ -290,6 +290,65 @@
             color: #999;
             margin-left: 10px;
         }
+        
+        /* ============== PENAMBAHAN CSS UNTUK SECTION ARTIKEL ============== */
+        .article-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+        }
+
+        .article-card {
+            background-color: var(--white-color);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-light);
+            transition: var(--transition);
+        }
+
+        .article-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-strong);
+        }
+
+        .article-card a {
+            display: block;
+        }
+        
+        .article-img {
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            object-fit: cover;
+        }
+        
+        .article-info {
+            padding: 25px;
+        }
+        
+        .article-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            line-height: 1.4;
+            color: var(--heading-color);
+        }
+
+        .article-info p {
+            font-size: 0.9rem;
+            color: var(--text-color);
+            opacity: 0.8;
+            margin-bottom: 20px;
+        }
+        
+        .read-more {
+            font-weight: 600;
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .article-card:hover .read-more {
+            letter-spacing: 0.5px;
+        }
+        /* =================================================================== */
 
         /* Testimonial Slider Section */
         .testimonial-slider {
@@ -624,7 +683,7 @@
                 <li><a href="#home" class="active">Home</a></li>
                 <li><a href="#products">Produk</a></li>
                 <li><a href="#bundles">Paket</a></li>
-                <li><a href="#testimonial-slider">Testimoni</a></li>
+                <li><a href="#articles">Artikel</a></li> <li><a href="#testimonial-slider">Testimoni</a></li>
                 <li><a href="#faq">FAQ</a></li>
             </ul>
         </nav>
@@ -698,6 +757,41 @@
         </div>
     </section>
 
+    <section id="articles" class="articles">
+        <h2 class="section-title reveal">Artikel Terbaru</h2>
+        <div class="article-grid">
+            <div class="article-card reveal">
+                <a href="https://rifqymaulanaa.github.io/2bshinee/artikel1" target="_blank">
+                    <img src="artikel1.png" alt="Tips Merawat Kulit Wajah" class="article-img">
+                    <div class="article-info">
+                        <h3>5 Tips Jitu Merawat Kulit Wajah Agar Tetap Sehat dan Glowing</h3>
+                        <p>Kulit sehat adalah investasi. Temukan 5 langkah fundamental yang bisa Anda terapkan setiap hari untuk hasil maksimal.</p>
+                        <span class="read-more">Baca Selengkapnya <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+            </div>
+            <div class="article-card reveal">
+                <a href="https://rifqymaulanaa.github.io/2bshinee/artikel2" target="_blank">
+                    <img src="artikel2.png" alt="Mengenal Kandungan Retinol" class="article-img">
+                    <div class="article-info">
+                        <h3>Mengenal Kandungan Retinol untuk Pemula</h3>
+                        <p>Retinol adalah holy grail anti-aging. Pahami cara kerjanya dan bagaimana cara aman memulainya tanpa iritasi.</p>
+                        <span class="read-more">Baca Selengkapnya <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+            </div>
+            <div class="article-card reveal">
+                <a href="https://rifqymaulanaa.github.io/2bshinee/artikel3" target="_blank">
+                    <img src="artikel3.png" alt="Memilih Sunscreen yang Tepat" class="article-img">
+                    <div class="article-info">
+                        <h3>Rahasia Memilih Sunscreen Sesuai Jenis Kulit</h3>
+                        <p>Jangan salah pilih! Pelajari perbedaan sunscreen physical & chemical serta mana yang terbaik untuk kulitmu.</p>
+                        <span class="read-more">Baca Selengkapnya <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
     <section id="testimonial-slider" class="testimonial-slider">
         <h2 class="section-title reveal">Testimoni dalam Gambar</h2>
         <div class="slider-container">
@@ -959,4 +1053,3 @@
     </script>
 </body>
 </html>
-
