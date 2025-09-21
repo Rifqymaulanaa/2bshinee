@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5 Tips Merawat Kulit Wajah - 2BShine Skincare</title>
+    <link rel="icon" href="favicon.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS Variables untuk Tema Brand 2BShine */
+        :root {
+            --primary-color: #E4A5B5; /* Pink utama dari brand */
+            --secondary-color: #F8DDE3; /* Pink muda untuk background */
+            --accent-color: #FDF0F3; /* Pink sangat terang/putih pink */
+            --text-color: #4D3C40; /* Warna teks gelap ke arah coklat/pink tua */
+            --heading-color: #D18496; /* Warna pink lebih tegas untuk judul */
+            --white-color: #FFFFFF;
+            --green-color-success: #25D366; /* Warna WhatsApp */
+
+            --shadow-light: 0 4px 15px rgba(0, 0, 0, 0.06);
+            --shadow-strong: 0 8px 25px rgba(210, 150, 160, 0.25);
+            --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --border-radius: 20px;
+        }
+
+        /* Reset dan Gaya Dasar */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--secondary-color);
+            background-image: linear-gradient(180deg, var(--accent-color) 0%, var(--secondary-color) 100%);
+            color: var(--text-color);
+            line-height: 1.7;
+            overflow-x: hidden;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        /* Kustom Cursor Follower */
+        .cursor-follower {
+            position: fixed;
+            width: 25px;
+            height: 25px;
+            border: 2px solid var(--primary-color);
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s ease-out, opacity 0.2s ease-out;
+            z-index: 9999;
+            opacity: 0;
+        }
+
+        body:hover .cursor-follower {
+            opacity: 1;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: var(--heading-color);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul { list-style: none; }
+
+        /* Header & Navbar (Sama seperti halaman utama) */
+        header {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 900px;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(15px);
+            border-radius: 50px;
+            box-shadow: var(--shadow-strong);
+            transition: var(--transition);
+            animation: fadeInDown 1s ease-in-out;
+        }
+
+        @keyframes fadeInDown {
+            from { top: -100px; opacity: 0; }
+            to { top: 20px; opacity: 1; }
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            height: 45px;
+        }
+
+        .logo img {
+            height: 100%;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links li a {
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 8px 16px;
+            border-radius: 30px;
+            color: var(--text-color);
+            font-size: 0.9rem;
+        }
+
+        .nav-links li a:hover, .nav-links li a.active {
+            color: var(--white-color);
+            background-color: var(--primary-color);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--text-color);
+            z-index: 1001;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 998;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 14px 35px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            box-shadow: var(--shadow-strong);
+            letter-spacing: 0.5px;
+        }
+
+        .btn:hover {
+            background-color: var(--heading-color);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 12px 30px rgba(210, 150, 160, 0.4);
+        }
+
+        /* =============== HALAMAN ARTIKEL =============== */
+        .article-section {
+            padding: 150px 8% 100px; /* Padding atas lebih besar untuk header */
+        }
+        
+        .article-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2.5fr 1fr; /* Kolom konten lebih besar */
+            gap: 50px;
+            align-items: flex-start;
+        }
+        
+        .article-content {
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-light);
+        }
+
+        .article-header h1 {
+            font-size: 3rem;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: var(--heading-color);
+        }
+
+        .article-meta {
+            font-size: 0.9rem;
+            color: #777;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--secondary-color);
+        }
+
+        .article-image {
+            width: 100%;
+            border-radius: var(--border-radius);
+            margin-bottom: 40px;
+            box-shadow: var(--shadow-strong);
+        }
+        
+        .article-body p {
+            margin-bottom: 1.5em;
+            font-size: 1.05rem;
+        }
+
+        .article-body h3 {
+            font-size: 1.8rem;
+            margin-top: 40px;
+            margin-bottom: 15px;
+        }
+        
+        .article-body ul {
+            list-style-type: disc;
+            margin-left: 25px;
+            margin-bottom: 1.5em;
+        }
+
+        .article-body ul li {
+            margin-bottom: 10px;
+        }
+
+        /* Sidebar Styling */
+        .sidebar .sidebar-widget {
+            background-color: var(--white-color);
+            padding: 25px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-light);
+            margin-bottom: 30px;
+        }
+
+        .sidebar .widget-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--heading-color);
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--primary-color);
+            position: relative;
+        }
+        
+        .sidebar .widget-title::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--secondary-color);
+        }
+
+        .sidebar .post-list li a {
+            display: block;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--accent-color);
+            transition: var(--transition);
+            font-weight: 500;
+        }
+        
+        .sidebar .post-list li:last-child a {
+            border-bottom: none;
+        }
+
+        .sidebar .post-list li a:hover {
+            color: var(--primary-color);
+            padding-left: 10px;
+        }
+        /* =============================================== */
+
+        /* Footer */
+        footer {
+            background-color: var(--heading-color);
+            color: var(--white-color);
+            padding: 70px 8% 30px;
+            border-radius: 40px 40px 0 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 25px;
+            color: var(--white-color);
+            font-size: 1.5rem;
+        }
+        
+        .footer-column p, .footer-column a {
+            margin-bottom: 12px;
+            display: block;
+            opacity: 0.9;
+            transition: var(--transition);
+        }
+
+        .footer-column a:hover {
+            opacity: 1;
+            color: var(--secondary-color);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--white-color);
+            color: var(--primary-color);
+            transform: translateY(-5px) scale(1.1);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* WhatsApp Floating Button */
+        .wa-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: var(--green-color-success);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            z-index: 999;
+            transition: var(--transition);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+          0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+          70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
+          100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        .wa-float:hover {
+            transform: scale(1.15);
+            animation: none;
+        }
+        
+        .reveal {
+            position: relative;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: 1s all ease;
+        }
+        
+        .reveal.visible {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* Responsiveness */
+        @media (max-width: 992px) {
+            header { width: 95%; }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                max-width: 300px;
+                height: 100vh;
+                background: linear-gradient(160deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 40px;
+                transition: var(--transition);
+                box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1);
+                z-index: 999;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li a {
+                color: var(--white-color);
+                font-size: 1.1rem;
+            }
+            
+            .nav-links li a:hover {
+                background-color: rgba(255, 255, 255, 0.2);
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .overlay.active {
+                display: block;
+            }
+            
+            /* -- Responsif Halaman Artikel -- */
+            .article-container {
+                grid-template-columns: 1fr; /* Tumpuk konten dan sidebar */
+            }
+
+            .article-content {
+                padding: 30px;
+            }
+
+            .article-header h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header { top: 10px; padding: 8px 15px; }
+            .cursor-follower { display: none; }
+            
+            .article-section {
+                padding: 120px 5% 80px;
+            }
+            
+            .article-content {
+                padding: 25px;
+            }
+            
+            .article-header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cursor-follower"></div>
+    <div class="overlay"></div>
+
+    <header id="header">
+        <a href="index.html" class="logo"> <img src="logo.png" alt="Logo 2BShine">
+        </a>
+        
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#products">Produk</a></li>
+                <li><a href="index.html#bundles">Paket</a></li>
+                <li><a href="artikel.html" class="active">Blog</a></li> <li><a href="index.html#faq">FAQ</a></li>
+            </ul>
+        </nav>
+        
+        <div class="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+    </header>
+
+    <section id="article" class="article-section">
+        <div class="article-container">
+            <main class="article-content reveal">
+                <div class="article-header">
+                    <h1>5 Tips Jitu Merawat Kulit Wajah Agar Tetap Sehat dan Glowing</h1>
+                    <div class="article-meta">
+                        <span>Oleh: <strong>dr. Putri</strong></span> | 
+                        <span>Diterbitkan: <strong>21 September 2025</strong></span>
+                    </div>
+                </div>
+                <img src="blog.png" alt="Tips Merawat Kulit Wajah" class="article-image">
+                <div class="article-body">
+                    <p>Memiliki kulit wajah yang sehat, cerah, dan glowing adalah impian setiap orang. Namun, untuk mencapainya dibutuhkan komitmen dan perawatan yang tepat. Polusi, stres, dan gaya hidup dapat memengaruhi kesehatan kulit kita. Oleh karena itu, membangun rutinitas skincare yang baik adalah investasi jangka panjang untuk kulit Anda.</p>
+                    <p>Berikut adalah 5 tips jitu dari 2BShine Skincare yang bisa Anda terapkan setiap hari untuk mendapatkan kulit idaman.</p>
+
+                    <h3>1. Membersihkan Wajah dengan Benar (Cleansing)</h3>
+                    <p>Pembersihan adalah langkah paling fundamental. Gunakan teknik <strong>double cleansing</strong> di malam hari, terutama jika Anda menggunakan makeup atau sunscreen. Mulai dengan pembersih berbahan dasar minyak (oil-based) untuk mengangkat kotoran, makeup, dan sebum, lalu lanjutkan dengan pembersih berbahan dasar air (water-based) seperti <strong>Platinum Silky Facial Wash</strong> untuk membersihkan sisa residu. Ini memastikan kulit benar-benar bersih dan siap menerima produk skincare selanjutnya.</p>
+
+                    <h3>2. Jangan Lupakan Eksfoliasi</h3>
+                    <p>Eksfoliasi berfungsi untuk mengangkat sel-sel kulit mati yang menumpuk dan menyebabkan kulit terlihat kusam serta menyumbat pori-pori. Lakukan eksfoliasi secara rutin 1-2 kali seminggu. Anda bisa memilih antara eksfoliasi fisik (scrub) atau kimiawi (menggunakan AHA/BHA). Namun, pastikan untuk tidak melakukannya secara berlebihan (over-exfoliating) karena dapat merusak skin barrier.</p>
+
+                    <h3>3. Hidrasi adalah Kunci</h3>
+                    <p>Kulit yang terhidrasi dengan baik akan terlihat lebih kenyal, sehat, dan awet muda. Gunakan toner yang menghidrasi dan serum dengan kandungan seperti Hyaluronic Acid setelah membersihkan wajah. Kunci kelembapan tersebut dengan moisturizer atau pelembap yang sesuai dengan jenis kulit Anda, baik itu kulit kering, berminyak, maupun kombinasi.</p>
+
+                    <h3>4. Wajib Menggunakan Sunscreen Setiap Hari</h3>
+                    <p>Ini adalah langkah yang tidak boleh dilewatkan! Sinar UV adalah penyebab utama penuaan dini (kerutan, flek hitam) dan masalah kulit lainnya. Gunakan sunscreen dengan minimal <strong>SPF 30</strong> setiap pagi, bahkan saat cuaca mendung atau Anda hanya beraktivitas di dalam ruangan. Aplikasikan ulang setiap 2-3 jam jika Anda banyak berkeringat atau terpapar sinar matahari langsung. Produk seperti <strong>Sunshine Cream Sunscreen</strong> kami memberikan proteksi sekaligus menutrisi kulit.</p>
+
+                    <h3>5. Nutrisi dari Dalam dan Gaya Hidup Sehat</h3>
+                    <p>Perawatan dari luar saja tidak cukup. Pastikan Anda mengonsumsi makanan bergizi seimbang, kaya akan antioksidan seperti buah dan sayur. Minum air putih yang cukup, kelola stres dengan baik, dan dapatkan tidur berkualitas minimal 7-8 jam setiap malam. Gaya hidup sehat akan terpancar dari kulit Anda.</p>
+                    
+                    <p>Dengan menerapkan kelima tips ini secara konsisten, Anda akan melihat perubahan signifikan pada kesehatan dan penampilan kulit wajah Anda. Jika Anda masih bingung harus memulai dari mana, jangan ragu untuk <strong>berkonsultasi dengan kami</strong> melalui WhatsApp!</p>
+                </div>
+            </main>
+
+            <aside class="sidebar reveal">
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">Artikel Lainnya</h3>
+                    <ul class="post-list">
+                        <li><a href="#">Rahasia Memilih Sunscreen Sesuai Jenis Kulit</a></li>
+                        <li><a href="#">Mengenal Kandungan Retinol untuk Pemula</a></li>
+                        <li><a href="#">7 Makanan yang Baik untuk Kesehatan Kulit</a></li>
+                        <li><a href="#">Perbedaan Essence, Serum, dan Ampoule</a></li>
+                        <li><a href="#">Cara Mengatasi Jerawat Tanpa Meninggalkan Bekas</a></li>
+                    </ul>
+                </div>
+                <div class="sidebar-widget">
+                     <h3 class="widget-title">Produk Terkait</h3>
+                     <ul class="post-list">
+                         <li><a href="index.html#products">Platinum Silky Facial Wash</a></li>
+                         <li><a href="index.html#products">Sunshine Cream Sunscreen</a></li>
+                         <li><a href="index.html#bundles">Paket Acne Series</a></li>
+                     </ul>
+                </div>
+            </aside>
+        </div>
+    </section>
+
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Tentang 2BShine</h3>
+                <p>2BShine by dr. Putri adalah brand skincare yang berkomitmen menghadirkan produk berkualitas tinggi dengan bahan-bahan alami yang efektif dan aman.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/2bshineofficial" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/2bshineofficial" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@2bshinebydrputri?_t=zs-8z50fmjimjx&_r=1" target="_blank"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://www.tiktok.com/@2bshine_skincare" target="_blank"><i class="fab fa-tiktok"></i></a>
+                    <a href="http://shopee.co.id/2bshinebydrputri" target="_blank"><i class="fas fa-shopping-cart"></i></a>
+                    <a href="https://wa.me/6282323310821" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Kontak Kami</h3>
+                 <a href="https://maps.app.goo.gl/bCtpMPnC3kLVkuQEA" target="_blank"><i class="fas fa-map-marker-alt"></i> Lihat Lokasi di Google Maps</a>
+                <a href="mailto:2bshineskincare@gmail.com"><i class="fas fa-envelope"></i> 2bshineskincare@gmail.com</a>
+                <p style="margin-top: 12px;"><i class="fas fa-phone"></i> +62 823-2331-0821</p>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Navigasi</h3>
+                <a href="index.html#home">Home</a>
+                <a href="index.html#products">Produk</a>
+                <a href="index.html#bundles">Paket</a>
+                <a href="artikel.html">Blog</a>
+                <a href="index.html#faq">FAQ</a>
+            </div>
+            
+        </div>
+        
+        <div class="footer-bottom">
+            <p>© 2025 2BShine Skincare. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/6282323310821" target="_blank" class="wa-float">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            // 1. Mobile Menu Toggle
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+            const overlay = document.querySelector('.overlay');
+            
+            hamburger.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                overlay.classList.toggle('active');
+                hamburger.innerHTML = navLinks.classList.contains('active') ? 
+                    '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+            });
+            
+            overlay.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                overlay.classList.remove('active');
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+            
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                        overlay.classList.remove('active');
+                        hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+                    }
+                });
+            });
+
+            // 2. Scroll Animation
+            const revealElements = document.querySelectorAll('.reveal');
+            
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible'); 
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            revealElements.forEach(el => {
+                revealObserver.observe(el);
+            });
+            
+            // 3. Custom Cursor Follower
+            const cursorFollower = document.querySelector('.cursor-follower');
+            window.addEventListener('mousemove', e => {
+                cursorFollower.style.left = e.clientX + 'px';
+                cursorFollower.style.top = e.clientY + 'px';
+            });
+            
+            document.querySelectorAll('a, button, .product-card, .faq-question').forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    cursorFollower.style.transform = 'translate(-50%, -50%) scale(2)';
+                });
+                el.addEventListener('mouseleave', () => {
+                    cursorFollower.style.transform = 'translate(-50%, -50%) scale(1)';
+                });
+            });
+
+        });
+    </script>
+</body>
+</html>
