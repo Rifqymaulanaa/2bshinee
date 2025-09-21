@@ -152,42 +152,79 @@
             background: rgba(0, 0, 0, 0.5);
             z-index: 998;
         }
-
+        
+        /* ============== PERUBAHAN CSS HERO SECTION ============== */
         .hero {
-            height: 100vh;
-            background-image: url('hero1.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            text-align: center;
-            color: var(--text-color);
-            padding: 0 20px;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            margin-top: 60px; 
-            background-color: rgba(255, 255, 255, 0.5); 
-            padding: 30px;
-            border-radius: var(--border-radius);
-            backdrop-filter: blur(5px);
+            padding: 140px 8% 100px; /* Padding atas untuk header */
         }
         
-        .hero-content h1 {
-            font-size: 4rem;
-            margin-bottom: 20px;
-            color: var(--heading-color);
-            text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.5);
+        .hero-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+            width: 100%;
+            max-width: 1200px; /* Lebar maksimum konten */
         }
 
-        .hero-content p {
-            font-size: 1.25rem;
-            margin-bottom: 35px;
-            font-weight: 300;
+        .hero-text {
+            flex: 1;
+            max-width: 550px; /* Batasi lebar teks */
+            text-align: left;
+            animation: fadeInUp 1s ease-in-out;
         }
+        
+        @keyframes fadeInUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .hero-text h1 {
+            font-size: 3.2rem;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: var(--heading-color);
+            text-shadow: 1px 1px 5px rgba(255, 255, 255, 0.3);
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+        
+        .hero-price {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .hero-image {
+            flex: 1;
+            max-width: 500px;
+            animation: fadeInRight 1s ease-in-out;
+        }
+        
+        @keyframes fadeInRight {
+            from { transform: translateX(50px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-strong);
+            object-fit: cover;
+        }
+        /* ========================================================= */
 
         .btn {
             display: inline-block;
@@ -596,6 +633,25 @@
         @media (max-width: 992px) {
             header { width: 95%; }
 
+            /* Penyesuaian Hero Section untuk Tablet */
+            .hero { text-align: center; }
+            .hero-container {
+                flex-direction: column;
+                gap: 40px;
+            }
+            .hero-text {
+                order: 2; /* Teks di bawah gambar */
+                text-align: center;
+                max-width: 100%;
+            }
+            .hero-image {
+                order: 1; /* Gambar di atas teks */
+                max-width: 450px; /* Sedikit lebih kecil di tablet */
+            }
+             .hero-text h1 {
+                font-size: 2.8rem;
+            }
+
             .nav-links {
                 position: fixed;
                 top: 0;
@@ -633,18 +689,18 @@
             .overlay.active {
                 display: block;
             }
-
-            .hero-content h1 {
-                font-size: 3rem;
-            }
-
         }
 
         @media (max-width: 768px) {
             header { top: 10px; padding: 8px 15px; }
             .section-title { font-size: 2.2rem; }
-            .hero-content h1 { font-size: 2.5rem; }
-            .hero-content p { font-size: 1.1rem; }
+            
+            /* Penyesuaian Hero Section untuk Mobile */
+            .hero-text h1 { font-size: 2.5rem; }
+            .hero-text p { font-size: 1rem; }
+            .hero-price { font-size: 1.4rem; }
+            .hero-image { max-width: 90%; }
+
             section { padding: 80px 5%; }
             .cursor-follower { display: none; }
             
@@ -683,7 +739,8 @@
                 <li><a href="#home" class="active">Home</a></li>
                 <li><a href="#products">Produk</a></li>
                 <li><a href="#bundles">Paket</a></li>
-                <li><a href="#articles">Artikel</a></li> <li><a href="#testimonial-slider">Testimoni</a></li>
+                <li><a href="#articles">Artikel</a></li>
+                <li><a href="#testimonial-slider">Testimoni</a></li>
                 <li><a href="#faq">FAQ</a></li>
             </ul>
         </nav>
@@ -694,13 +751,18 @@
     </header>
 
     <section id="home" class="hero">
-        <div class="hero-content">
-            <h1>Your Beauty, Your Shine</h1>
-            <p>Rangkaian skincare profesional dengan bahan alami pilihan untuk kulit sehat, cerah, dan ternutrisi setiap hari.</p>
-            <a href="#products" class="btn">Lihat Produk Kami</a>
+        <div class="hero-container">
+            <div class="hero-text">
+                <h1>Wajah Glowing & Sehat dalam 14 Hari</h1>
+                <p>Kusam hilang, kulit cerah alami. Diformulasikan dengan bahan alami pilihan untuk menutrisi dan mengembalikan kilau sehat kulitmu.</p>
+                <div class="hero-price">Hanya Rp 280.000</div>
+                <a href="#bundles" class="btn">Dapatkan Glow Up Package</a>
+            </div>
+            <div class="hero-image">
+                <img src="hero3.png" alt="Rangkaian Produk 2BShine Skincare">
+            </div>
         </div>
     </section>
-
     <section id="products" class="products">
         <h2 class="section-title reveal">Produk Unggulan</h2>
         <div class="product-grid">
@@ -1053,5 +1115,3 @@
     </script>
 </body>
 </html>
-
-
